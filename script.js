@@ -2,25 +2,44 @@
   "use strict";
 
 
-  // Booking menu: both main booking buttons open the same accessible dialog.
+  // Booking menu: use a simple overlay for compatibility with older mobile browsers.
   const bookingDialog = document.getElementById("booking-dialog");
-  if (bookingDialog && typeof bookingDialog.showModal === "function") {
-    document.querySelectorAll("[data-open-booking]").forEach((button) => {
-      button.addEventListener("click", () => bookingDialog.showModal());
-    });
-    const closeBooking = bookingDialog.querySelector("[data-close-booking]");
-    if (closeBooking) closeBooking.addEventListener("click", () => bookingDialog.close());
+  const bookingTriggers = document.querySelectorAll("[data-open-booking]");
+  const closeBooking = bookingDialog && bookingDialog.querySelector("[data-close-booking]");
+  let lastBookingTrigger = null;
+
+  function openBookingMenu(trigger) {
+    if (!bookingDialog) {
+      window.location.href = "https://www.booking.com/Share-pNHwYV";
+      return;
+    }
+    lastBookingTrigger = trigger || null;
+    bookingDialog.hidden = false;
+    bookingDialog.setAttribute("aria-hidden", "false");
+    document.body.classList.add("booking-menu-open");
+    if (closeBooking) closeBooking.focus();
+  }
+
+  function closeBookingMenu() {
+    if (!bookingDialog || bookingDialog.hidden) return;
+    bookingDialog.hidden = true;
+    bookingDialog.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("booking-menu-open");
+    if (lastBookingTrigger && document.contains(lastBookingTrigger)) lastBookingTrigger.focus();
+  }
+
+  bookingTriggers.forEach((button) => {
+    button.addEventListener("click", () => openBookingMenu(button));
+  });
+  if (closeBooking) closeBooking.addEventListener("click", closeBookingMenu);
+  if (bookingDialog) {
     bookingDialog.addEventListener("click", (event) => {
-      if (event.target === bookingDialog) bookingDialog.close();
-    });
-  } else {
-    // Graceful fallback for browsers without native dialog support.
-    document.querySelectorAll("[data-open-booking]").forEach((button) => {
-      button.addEventListener("click", () => {
-        window.open("https://www.booking.com/Share-pNHwYV", "_blank", "noopener");
-      });
+      if (event.target === bookingDialog) closeBookingMenu();
     });
   }
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeBookingMenu();
+  });
 
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
