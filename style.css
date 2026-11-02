@@ -299,3 +299,65 @@ footer { padding: 28px 7%; display: flex; justify-content: space-between; align-
     transition: none !important;
   }
 }
+
+
+/* More comfortable navigation targets on mouse, touch and keyboard */
+.site-header nav {
+  gap: clamp(16px, 2.2vw, 30px);
+  font-size: 14px;
+  font-weight: 500;
+}
+.site-header nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 2px;
+  transition: color .2s ease;
+}
+@media (max-width: 800px) {
+  .site-header nav {
+    gap: 8px;
+    font-size: 13px;
+  }
+  .site-header nav a {
+    min-height: 46px;
+    padding: 10px 4px;
+  }
+}
+@media (max-width: 480px) {
+  .site-header nav {
+    gap: 2px;
+    font-size: 12px;
+  }
+  .site-header nav a {
+    padding: 10px 3px;
+  }
+}
+
+/* Keep content visible unless the scroll-reveal observer is ready */
+.reveal-on-scroll,
+.gallery-grid figure.reveal-on-scroll {
+  opacity: 1;
+  transform: none;
+}
+.has-scroll-reveal .reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(26px);
+}
+.has-scroll-reveal .reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.has-scroll-reveal .gallery-grid figure.reveal-on-scroll {
+  transform: translateY(20px) scale(.985);
+}
+.has-scroll-reveal .gallery-grid figure.reveal-on-scroll.is-visible {
+  transform: translateY(0) scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .has-scroll-reveal .reveal-on-scroll,
+  .has-scroll-reveal .gallery-grid figure.reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
