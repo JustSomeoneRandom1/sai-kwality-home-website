@@ -3,14 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sai Kwality Homes offers comfortable serviced accommodation. Elevate your stay.">
+  <meta name="description" content="Discover comfortable serviced accommodation at Sai Kwality Homes, 2A First Avenue, West Thurrock, Grays, Essex. Enquire about your stay.">
+  <meta name="theme-color" content="#344b40">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sai Kwality Homes | Elevate Your Stay">
+  <meta property="og:description" content="Comfortable serviced accommodation in Grays, Essex. Feel at home wherever life takes you.">
   <title>Sai Kwality Homes | Elevate Your Stay</title>
   <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "Sai Kwality Homes",
+    "email": "Saikwalityhome@gmail.com",
+    "telephone": "+447405730207",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "2A First Avenue",
+      "addressLocality": "West Thurrock, Grays",
+      "addressRegion": "Essex",
+      "postalCode": "RM20 3JR",
+      "addressCountry": "GB"
+    }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <a class="brand" href="#home" aria-label="Sai Kwality Homes home">
       <span class="brand-mark">SKH</span>
@@ -25,14 +47,17 @@
     <a class="header-cta" href="mailto:Saikwalityhome@gmail.com">Enquire now</a>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="hero" id="home">
       <div class="hero-shade"></div>
       <div class="hero-content">
         <p class="eyebrow">WELCOME TO SAI KWALITY HOMES</p>
         <h1>Feel at home.<br><em>Wherever life takes you.</em></h1>
         <p class="hero-copy">Thoughtfully prepared serviced accommodation for comfortable stays, whether you are travelling for work or taking time away.</p>
-        <a class="button button-light" href="#property">Explore our property <span>→</span></a>
+        <div class="hero-actions">
+          <a class="button button-light" href="#property">Explore our property <span>→</span></a>
+          <a class="button button-outline-light" href="https://www.booking.com/Share-pNHwYV" target="_blank" rel="noopener noreferrer">Check availability <span>↗</span></a>
+        </div>
       </div>
       <div class="hero-note"><span class="note-line"></span> COMFORT · CARE · CONVENIENCE</div>
     </section>
@@ -49,7 +74,7 @@
       <div class="property-photo">
         <!-- Replace images/property-exterior.jpeg with your own property exterior photo -->
         <img src="images/Property-exterior.jpeg" alt="Exterior of Sai Kwality Homes serviced accommodation" onerror="this.style.display='none'; this.parentElement.classList.add('photo-placeholder');">
-        <span class="photo-hint"><br><small>images/property-exterior.jpeg</small></span>
+        <span class="photo-hint">Property photograph coming soon</span>
       </div>
       <div class="property-info">
         <p class="eyebrow">OUR FEATURED PROPERTY</p>
@@ -63,7 +88,7 @@
         </ul>
         <div class="property-actions">
           <a class="button button-dark" href="mailto:Saikwalityhome@gmail.com?subject=Enquiry%20about%202A%20First%20Avenue">Enquire about this property <span>→</span></a>
-          <a class="button booking-button" href="https://www.booking.com/Share-pNHwYV" target="_blank" rel="noopener noreferrer">Search on Booking.com <span>↗</span></a>
+          <a class="button booking-button" href="https://www.booking.com/Share-pNHwYV" target="_blank" rel="noopener noreferrer">Book your stay <span>↗</span></a>
         </div>
       </div>
     </section>
@@ -74,39 +99,40 @@
           <p class="eyebrow">TAKE A CLOSER LOOK</p>
           <h2>Make yourself<br><em>at home.</em></h2>
         </div>
+        <p>Explore the spaces at Sai Kwality Homes. Select any photograph to view it larger and browse the gallery.</p>
       </div>
       <div class="gallery-grid">
         <figure class="gallery-large">
           <img src="images/Living-room.jpeg" alt="Living room" onerror="this.style.display='none'; this.parentElement.classList.add('gallery-placeholder');">
-          <figcaption>Living space <small>images/living-room.jpeg</small></figcaption>
+          <figcaption>Living space </figcaption>
         </figure>
         <figure>
           <img src="images/Bedroom.jpeg" alt="Bedroom" onerror="this.style.display='none'; this.parentElement.classList.add('gallery-placeholder');">
-          <figcaption>Bedroom <small>images/bedroom.jpeg</small></figcaption>
+          <figcaption>Bedroom </figcaption>
         </figure>
         <figure>
           <img src="images/Kitchen.jpeg" alt="Kitchen" onerror="this.style.display='none'; this.parentElement.classList.add('gallery-placeholder');">
-          <figcaption>Kitchen <small>images/kitchen.jpeg</small></figcaption>
+          <figcaption>Kitchen </figcaption>
         </figure>
         <figure>
           <img src="images/Bathroom.jpeg" alt="Bathroom" onerror="this.style.display='none'; this.parentElement.classList.add('gallery-placeholder');">
-          <figcaption>Bathroom <small>images/bathroom.jpeg</small></figcaption>
+          <figcaption>Bathroom </figcaption>
         </figure>
         <figure>
           <img src="images/Dining-area.jpeg" alt="Dining area" onerror="this.style.display='none'; this.parentElement.classList.add('gallery-placeholder');">
-          <figcaption>Dining area <small>images/dining-area.jpeg</small></figcaption>
+          <figcaption>Dining area </figcaption>
         </figure>
         <figure>
           <img src="images/Second-Bedroom.jpeg" alt="Second bedroom" onerror="this.style.display='none'; this.parentElement.classList.add('gallery-placeholder');">
-          <figcaption>Second bedroom <small>images/second-bedroom.jpeg</small></figcaption>
+          <figcaption>Second bedroom </figcaption>
         </figure>
         <figure>
           <img src="images/Living-Space.jpeg" alt="Living Space" onerror="this.style.display='none'; this.parentElement.classList.add('gallery-placeholder');">
-          <figcaption>Living Space <small>images/living-space.jpeg</small></figcaption>
+          <figcaption>Living Space </figcaption>
         </figure>
         <figure>
           <img src="images/Garden.jpeg" alt="Garden" onerror="this.style.display='none'; this.parentElement.classList.add('gallery-placeholder');">
-          <figcaption>Garden <small>images/garden.jpeg</small></figcaption>
+          <figcaption>Garden </figcaption>
         </figure>
       </div>
     </section>
@@ -148,7 +174,8 @@
   <footer>
     <a class="brand footer-brand" href="#home"><span class="brand-mark">SKH</span><span class="brand-name">SAI KWALITY <strong>HOMES</strong></span></a>
     <p class="tagline">ELEVATE YOUR STAY.</p>
-    <p class="copyright">© <span id="year">2026</span> Sai Kwality Homes. All rights reserved.</p>
+    <p class="copyright">© <span id="year"></span> Sai Kwality Homes. All rights reserved.</p>
   </footer>
+  <script src="script.js" defer></script>
 </body>
 </html>
