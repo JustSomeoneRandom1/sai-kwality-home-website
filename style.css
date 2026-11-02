@@ -450,3 +450,43 @@ footer .copyright {
   .booking-dialog-inner { padding: 38px 22px 24px; }
   .booking-dialog-link { align-items: flex-start; flex-direction: column; }
 }
+
+
+/* Compatibility overrides for browsers with inconsistent image sizing or dialog support */
+.highlight-item .highlight-image {
+  display: block !important;
+  width: 100% !important;
+  height: 220px !important;
+  max-height: 220px !important;
+  min-height: 0 !important;
+  object-fit: cover !important;
+}
+.booking-dialog[hidden] { display: none !important; }
+.booking-dialog:not([hidden]) {
+  display: flex;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  border: 0;
+  background: rgba(12, 20, 16, .76);
+  box-shadow: none;
+}
+.booking-dialog:not([hidden]) .booking-dialog-inner {
+  width: 100%;
+  max-width: 520px;
+  max-height: 100%;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid var(--sand);
+  box-shadow: 0 24px 80px rgba(0,0,0,.25);
+}
+body.booking-menu-open { overflow: hidden; }
