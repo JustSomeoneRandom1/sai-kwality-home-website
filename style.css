@@ -361,3 +361,13 @@ footer { padding: 28px 7%; display: flex; justify-content: space-between; align-
     transform: none !important;
   }
 }
+
+
+/* Keep the footer and copyright visible; do not depend on scroll JS */
+footer,
+footer > *,
+footer .copyright {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
