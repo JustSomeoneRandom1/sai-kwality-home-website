@@ -399,3 +399,54 @@ footer .copyright {
   .booking-platforms { grid-template-columns: 1fr; }
   .booking-platform { align-items: flex-start; flex-direction: column; }
 }
+
+
+/* Photo-led local attraction cards */
+.highlight-grid { align-items: stretch; }
+.highlight-item { padding: 0; overflow: hidden; }
+.highlight-image { display: block; width: 100%; height: 190px; object-fit: cover; }
+.highlight-content { padding: 22px; }
+.highlight-item p { min-height: 70px; }
+.image-credit { display: block; margin-top: 13px; color: #899089; font-size: 10px; }
+
+/* Booking options appear in a centred pop-up, not as a page section */
+.booking-button-trigger { border: 0; cursor: pointer; font-family: inherit; }
+.booking-dialog {
+  width: min(520px, calc(100% - 28px));
+  max-width: none;
+  max-height: calc(100% - 32px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--sand);
+  color: var(--ink);
+  background: #fff;
+  box-shadow: 0 24px 80px rgba(0,0,0,.25);
+}
+.booking-dialog::backdrop { background: rgba(12, 20, 16, .72); backdrop-filter: blur(3px); }
+.booking-dialog-inner { position: relative; padding: 42px; }
+.booking-dialog-inner h2 { margin-bottom: 12px; font-size: clamp(30px, 5vw, 40px); }
+.booking-dialog-inner > p:not(.eyebrow) { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+.booking-dialog-close {
+  position: absolute; top: 12px; right: 16px;
+  width: 42px; height: 42px; border: 0; background: transparent;
+  color: var(--green); font-size: 30px; cursor: pointer;
+}
+.booking-dialog-links { display: grid; gap: 12px; }
+.booking-dialog-link {
+  display: flex; justify-content: space-between; align-items: center; gap: 14px;
+  min-height: 72px; padding: 18px 20px;
+  border: 1px solid var(--sand); background: var(--cream);
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+.booking-dialog-link:hover { border-color: var(--gold); background: #fff; transform: translateY(-2px); }
+.booking-dialog-link strong { color: var(--green); font-size: 16px; }
+.booking-dialog-link span { color: var(--muted); font-size: 12px; }
+@media (max-width: 800px) {
+  .highlight-grid { grid-template-columns: 1fr; }
+  .highlight-item p { min-height: 0; }
+  .highlight-image { height: 220px; }
+}
+@media (max-width: 480px) {
+  .booking-dialog-inner { padding: 38px 22px 24px; }
+  .booking-dialog-link { align-items: flex-start; flex-direction: column; }
+}
