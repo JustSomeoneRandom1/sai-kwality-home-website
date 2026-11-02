@@ -490,3 +490,16 @@ footer .copyright {
   box-shadow: 0 24px 80px rgba(0,0,0,.25);
 }
 body.booking-menu-open { overflow: hidden; }
+
+
+/* Brand-coloured text selection */
+::selection {
+  color: #202b28;
+  background: #e2c995;
+  text-shadow: none;
+}
+::-moz-selection {
+  color: #202b28;
+  background: #e2c995;
+  text-shadow: none;
+}
