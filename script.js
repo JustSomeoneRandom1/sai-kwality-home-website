@@ -9,7 +9,7 @@
   const revealTargets = document.querySelectorAll(
     ".intro-label, .intro > div:not(.intro-label), .property-photo, .property-info, " +
     ".section-heading, .gallery-grid figure, .map-copy, .map-frame, " +
-    ".contact-section > *, footer > *"
+    ".contact-section > *"
   );
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!reduceMotion && "IntersectionObserver" in window && revealTargets.length) {
