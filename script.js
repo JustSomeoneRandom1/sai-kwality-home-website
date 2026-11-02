@@ -4,15 +4,15 @@
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
 
-  // Reveal content as it enters the viewport. If motion APIs are unavailable,
-  // leave everything visible rather than hiding page content.
+  // Reveal content as it enters the viewport. Content remains visible by
+  // default; the hidden state is enabled only after the observer is ready.
   const revealTargets = document.querySelectorAll(
     ".intro-label, .intro > div:not(.intro-label), .property-photo, .property-info, " +
     ".section-heading, .gallery-grid figure, .map-copy, .map-frame, " +
     ".contact-section > *, footer > *"
   );
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!reduceMotion && "IntersectionObserver" in window) {
+  if (!reduceMotion && "IntersectionObserver" in window && revealTargets.length) {
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -20,15 +20,18 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
+    }, { threshold: 0.08, rootMargin: "0px 0px -10% 0px" });
 
     revealTargets.forEach((element, index) => {
       element.classList.add("reveal-on-scroll");
       if (element.matches(".gallery-grid figure")) {
-        element.style.setProperty("--reveal-delay", (index % 4) * 75 + "ms");
+        element.style.setProperty("--reveal-delay", (index % 4) * 100 + "ms");
       }
       revealObserver.observe(element);
     });
+    // Add this only after every target is observed, so a JS error or an
+    // unsupported browser can never leave page content hidden.
+    document.documentElement.classList.add("has-scroll-reveal");
   }
 
   const gallery = document.querySelector(".gallery-grid");
