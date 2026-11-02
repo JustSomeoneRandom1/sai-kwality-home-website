@@ -4,6 +4,33 @@
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
 
+  // Reveal content as it enters the viewport. If motion APIs are unavailable,
+  // leave everything visible rather than hiding page content.
+  const revealTargets = document.querySelectorAll(
+    ".intro-label, .intro > div:not(.intro-label), .property-photo, .property-info, " +
+    ".section-heading, .gallery-grid figure, .map-copy, .map-frame, " +
+    ".contact-section > *, footer > *"
+  );
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
+
+    revealTargets.forEach((element, index) => {
+      element.classList.add("reveal-on-scroll");
+      if (element.matches(".gallery-grid figure")) {
+        element.style.setProperty("--reveal-delay", (index % 4) * 75 + "ms");
+      }
+      revealObserver.observe(element);
+    });
+  }
+
   const gallery = document.querySelector(".gallery-grid");
   if (!gallery) return;
 
