@@ -1,6 +1,27 @@
 (() => {
   "use strict";
 
+
+  // Booking menu: both main booking buttons open the same accessible dialog.
+  const bookingDialog = document.getElementById("booking-dialog");
+  if (bookingDialog && typeof bookingDialog.showModal === "function") {
+    document.querySelectorAll("[data-open-booking]").forEach((button) => {
+      button.addEventListener("click", () => bookingDialog.showModal());
+    });
+    const closeBooking = bookingDialog.querySelector("[data-close-booking]");
+    if (closeBooking) closeBooking.addEventListener("click", () => bookingDialog.close());
+    bookingDialog.addEventListener("click", (event) => {
+      if (event.target === bookingDialog) bookingDialog.close();
+    });
+  } else {
+    // Graceful fallback for browsers without native dialog support.
+    document.querySelectorAll("[data-open-booking]").forEach((button) => {
+      button.addEventListener("click", () => {
+        window.open("https://www.booking.com/Share-pNHwYV", "_blank", "noopener");
+      });
+    });
+  }
+
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
 
