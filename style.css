@@ -519,3 +519,57 @@ body.booking-menu-open { overflow: hidden; }
   .guest-type-grid { grid-template-columns: 1fr; }
   .guest-type-card { padding: 28px; }
 }
+
+
+/* Dedicated booking and contact pages */
+.page-hero {
+  padding: 105px 12% 95px;
+  color: #fff;
+  background: linear-gradient(110deg, rgba(25,39,32,.94), rgba(52,75,64,.82)), url("images/hero-home.jpg") center/cover no-repeat;
+}
+.page-hero h1 { max-width: 760px; margin-bottom: 22px; }
+.page-hero > p:last-child { max-width: 620px; color: #f0eee8; font-size: 15px; }
+.booking-page-intro { max-width: 620px; color: var(--muted); font-size: 14px; margin: -8px 0 30px; }
+.booking-page-platforms { max-width: 850px; }
+.booking-help { margin-top: 28px; color: var(--muted); font-size: 13px; }
+.booking-help .text-link { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+.booking-gallery { padding-top: 75px; }
+.booking-bottom-cta {
+  padding: 76px 12%;
+  text-align: center;
+  color: #fff;
+  background: var(--green);
+}
+.booking-bottom-cta h2 { margin-bottom: 25px; }
+.booking-bottom-cta h2 em { color: #e2c995; }
+.contact-page-section {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 9%;
+  align-items: start;
+}
+.contact-page-copy > p:last-child { max-width: 390px; color: var(--muted); font-size: 14px; }
+.contact-page-cards { display: grid; gap: 14px; }
+.contact-page-cards .contact-card { min-height: 86px; }
+.contact-address {
+  padding: 65px 12%;
+  text-align: center;
+  background: var(--cream);
+}
+.contact-address h2 { margin-bottom: 12px; }
+.contact-address > p:not(.eyebrow) { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+.contact-address .text-link { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+.footer-links { display: flex; justify-content: center; gap: 22px; margin: 12px 0; color: var(--muted); font-size: 12px; }
+.footer-links a:hover { color: var(--gold); }
+.site-header nav a[aria-current="page"] { color: var(--gold); }
+@media (max-width: 800px) {
+  .page-hero { padding: 78px 7% 70px; }
+  .contact-page-section { grid-template-columns: 1fr; gap: 34px; }
+  .booking-bottom-cta { padding: 60px 7%; }
+  .contact-address { padding: 54px 7%; }
+}
+@media (max-width: 480px) {
+  .page-hero { padding: 66px 6% 58px; }
+  .booking-gallery { padding-top: 55px; }
+  .footer-links { gap: 18px; }
+}
