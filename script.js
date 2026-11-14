@@ -38,7 +38,34 @@
     });
   }
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeBookingMenu();
+    if (event.key === "Escape") { closeBookingMenu(); closeEnquiryDialog(); }
+  });
+
+
+  // Enquiry form pop-up controls.
+  const enquiryDialog = document.getElementById("enquiry-dialog");
+  const enquiryTriggers = document.querySelectorAll("[data-open-enquiry]");
+  const closeEnquiry = enquiryDialog && enquiryDialog.querySelector("[data-close-enquiry]");
+  let lastEnquiryTrigger = null;
+  function openEnquiryDialog(trigger) {
+    if (!enquiryDialog) { window.location.href = "booking.html"; return; }
+    lastEnquiryTrigger = trigger || null;
+    enquiryDialog.hidden = false;
+    enquiryDialog.setAttribute("aria-hidden", "false");
+    document.body.classList.add("enquiry-menu-open");
+    if (closeEnquiry) closeEnquiry.focus();
+  }
+  function closeEnquiryDialog() {
+    if (!enquiryDialog || enquiryDialog.hidden) return;
+    enquiryDialog.hidden = true;
+    enquiryDialog.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("enquiry-menu-open");
+    if (lastEnquiryTrigger && document.contains(lastEnquiryTrigger)) lastEnquiryTrigger.focus();
+  }
+  enquiryTriggers.forEach((button) => button.addEventListener("click", () => openEnquiryDialog(button)));
+  if (closeEnquiry) closeEnquiry.addEventListener("click", closeEnquiryDialog);
+  if (enquiryDialog) enquiryDialog.addEventListener("click", (event) => {
+    if (event.target === enquiryDialog) closeEnquiryDialog();
   });
 
   const year = document.getElementById("year");
