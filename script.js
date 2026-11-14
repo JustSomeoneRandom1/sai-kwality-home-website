@@ -90,6 +90,7 @@
     if (lastContactTrigger && document.contains(lastContactTrigger)) lastContactTrigger.focus();
   }
   contactTriggers.forEach((button) => button.addEventListener("click", () => openContactDialog(button)));
+  if (contactDialog) contactDialog.querySelectorAll('a[href*="#contact-form"]').forEach((link) => link.addEventListener("click", closeContactDialog));
   if (closeContact) closeContact.addEventListener("click", closeContactDialog);
   if (contactDialog) contactDialog.addEventListener("click", (event) => {
     if (event.target === contactDialog) closeContactDialog();
