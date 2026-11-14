@@ -82,3 +82,9 @@
   .enquiry-form { padding: 22px 18px; }
   .enquiry-submit { width: 100%; justify-content: space-between; }
 }
+
+.enquiry-submit:disabled { opacity: .65; cursor: wait; }
+.enquiry-status { min-height: 1.5em; font-size: 12px; line-height: 1.6; }
+.enquiry-status:empty { display: none; }
+.enquiry-status.is-success { color: #286044; }
+.enquiry-status.is-error { color: #a33b32; }
