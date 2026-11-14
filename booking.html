@@ -13,7 +13,7 @@
   <link rel="alternate icon" href="favicon.svg">
   <link rel="canonical" href="https://saikwalityhome.co.uk/booking.html">
   <link rel="stylesheet" href="style.css?v=6">
-  <link rel="stylesheet" href="booking-form.css?v=1">
+  <link rel="stylesheet" href="booking-form.css?v=2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
@@ -101,7 +101,7 @@
       <p>Have a question, need to check dates or arranging a stay for work or family? Send us your details and we’ll get back to you by email.</p>
       <p class="enquiry-email-note">Your enquiry will be sent to <strong>saikwalityhome@gmail.com</strong>.</p>
     </div>
-    <form class="enquiry-form" action="https://formsubmit.co/aryanbhatt3012@gmail.com" method="POST">
+    <form class="enquiry-form" action="https://formsubmit.co/ajax/c7a8a921f96efe5afdc62653817aa3ce" method="POST" data-ajax-enquiry>
       <input type="hidden" name="_subject" value="New website enquiry - Sai Kwality Home">
       <input type="hidden" name="_template" value="table">
       <input type="text" name="_honey" class="enquiry-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -116,7 +116,7 @@
         </div>
         <div class="enquiry-field">
           <label for="enquiry-phone">Phone number</label>
-          <input id="enquiry-phone" name="Phone" type="tel" autocomplete="tel" placeholder="Your contact number" maxlength="40">
+          <input id="enquiry-phone" name="Phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+44 7xxx xxx xxx" maxlength="20" pattern="[+0-9() .-]{7,20}" title="Use digits, spaces, +, brackets or hyphens only.">
         </div>
       </div>
       <div class="enquiry-fields-two">
@@ -126,7 +126,7 @@
         </div>
         <div class="enquiry-field">
           <label for="enquiry-departure">Check-out date</label>
-          <input id="enquiry-departure" name="Check-out date" type="date">
+          <input id="enquiry-departure" name="Check-out date" type="date" disabled>
         </div>
       </div>
       <div class="enquiry-field">
@@ -143,6 +143,7 @@
       </div>
       <p class="enquiry-privacy">Please only share information needed to respond to your enquiry. Your details will be used to handle this request.</p>
       <button class="button button-dark enquiry-submit" type="submit">Send your enquiry <span>→</span></button>
+      <p class="enquiry-status" data-enquiry-status role="status" aria-live="polite"></p>
       <p class="enquiry-required">Fields marked * are required.</p>
     </form>
   </section>
