@@ -12,8 +12,8 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate icon" href="favicon.svg">
   <link rel="canonical" href="https://saikwalityhome.co.uk/contact.html">
-  <link rel="stylesheet" href="style.css?v=7">
-  <link rel="stylesheet" href="booking-form.css?v=3">
+  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="booking-form.css?v=4">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
@@ -58,30 +58,15 @@
       </a>
     </div>
   </section>
-  <section class="contact-address">
-    <p class="eyebrow">OUR LOCATION</p>
-    <h2>Sai Kwality Home</h2>
-    <p>2A First Avenue, West Thurrock, Grays, Essex, RM20 3JR</p>
-    <a class="text-link" href="https://www.google.com/maps/search/?api=1&query=2A%20First%20Avenue%2C%20West%20Thurrock%2C%20Grays%2C%20RM20%203JR" target="_blank" rel="noopener noreferrer">Find us on Google Maps ↗</a>
-  </section>
-  <section class="booking-bottom-cta">
-    <p class="eyebrow">ALREADY KNOW YOUR DATES?</p>
-    <h2>Find your next stay.</h2>
-    <a class="button button-light" href="booking.html">View booking options <span>→</span></a>
-  </section>
-</main>
 
-  <button class="quick-enquiry-float enquiry-button-trigger" type="button" data-open-enquiry aria-label="Open the quick enquiry form">Quick enquiry <span aria-hidden="true">→</span></button>
-
-  <div class="enquiry-dialog" id="enquiry-dialog" role="dialog" aria-modal="true" aria-labelledby="enquiry-dialog-title" aria-hidden="true" hidden>
-    <div class="enquiry-dialog-inner">
-      <button class="enquiry-dialog-close" type="button" data-close-enquiry aria-label="Close enquiry form">×</button>
-      <div class="enquiry-dialog-heading">
-        <p class="eyebrow">A PERSONAL ENQUIRY</p>
-        <h2 id="enquiry-dialog-title">Let’s plan<br><em>your stay.</em></h2>
-        <p>Have a question or need to check dates? Send us your details and we’ll get back to you by email.</p>
-      </div>
-          <form class="enquiry-form" action="https://formsubmit.co/ajax/c7a8a921f96efe5afdc62653817aa3ce" method="POST" data-ajax-enquiry>
+  <section class="enquiry-section section-wrap" id="contact-form" aria-labelledby="contact-form-title">
+    <div class="enquiry-intro">
+      <p class="eyebrow">SEND US A MESSAGE</p>
+      <h2 id="contact-form-title">We’re here to<br><em>help you plan.</em></h2>
+      <p>Tell us a little about your stay, dates or any questions you have. Your message will be sent directly to our team, and we’ll get back to you by email.</p>
+      <p class="enquiry-email-note">Prefer email? Write to <strong>Saikwalityhome@gmail.com</strong>.</p>
+    </div>
+    <form class="enquiry-form" action="https://formsubmit.co/ajax/c7a8a921f96efe5afdc62653817aa3ce" method="POST" data-ajax-enquiry>
             <input type="hidden" name="_subject" value="New website enquiry - Sai Kwality Home">
             <input type="hidden" name="_template" value="table">
             <input type="text" name="_honey" class="enquiry-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -126,8 +111,22 @@
             <p class="enquiry-status" data-enquiry-status role="status" aria-live="polite"></p>
             <p class="enquiry-required">Fields marked * are required.</p>
           </form>
-    </div>
-  </div>
+  </section>
+  <section class="contact-address">
+    <p class="eyebrow">OUR LOCATION</p>
+    <h2>Sai Kwality Home</h2>
+    <p>2A First Avenue, West Thurrock, Grays, Essex, RM20 3JR</p>
+    <a class="text-link" href="https://www.google.com/maps/search/?api=1&query=2A%20First%20Avenue%2C%20West%20Thurrock%2C%20Grays%2C%20RM20%203JR" target="_blank" rel="noopener noreferrer">Find us on Google Maps ↗</a>
+  </section>
+  <section class="booking-bottom-cta">
+    <p class="eyebrow">ALREADY KNOW YOUR DATES?</p>
+    <h2>Find your next stay.</h2>
+    <a class="button button-light" href="booking.html">View booking options <span>→</span></a>
+  </section>
+</main>
+
+  <a class="quick-enquiry-float" href="contact.html#contact-form" aria-label="Go to the contact form">Contact us <span aria-hidden="true">→</span></a>
+
 
   <footer>
     <a class="brand footer-brand" href="index.html"><span class="brand-mark">SKH</span><span class="brand-name">SAI KWALITY <strong>HOME</strong></span></a>
