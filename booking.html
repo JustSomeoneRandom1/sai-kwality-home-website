@@ -113,8 +113,23 @@
   </section>
 </main>
 
-  <a class="quick-enquiry-float" href="contact.html#contact-form" aria-label="Go to the contact form">Contact us <span aria-hidden="true">→</span></a>
+  <button class="quick-enquiry-float" type="button" data-open-contact aria-haspopup="dialog" aria-controls="contact-dialog">Contact us <span aria-hidden="true">→</span></button>
 
+
+  <div class="booking-dialog contact-dialog" id="contact-dialog" role="dialog" aria-modal="true" aria-labelledby="contact-dialog-title" aria-hidden="true" hidden>
+    <div class="booking-dialog-inner">
+      <button class="booking-dialog-close" type="button" data-close-contact aria-label="Close contact menu">×</button>
+      <p class="eyebrow">WE’RE HERE TO HELP</p>
+      <h2 id="contact-dialog-title">Get in touch.</h2>
+      <p>Choose the easiest way to reach Sai Kwality Home.</p>
+      <div class="booking-dialog-links">
+        <a class="booking-dialog-link" href="contact.html#contact-form"><strong>Send an enquiry</strong><span>Tell us about your stay ↗</span></a>
+        <a class="booking-dialog-link" href="mailto:Saikwalityhome@gmail.com"><strong>Email us</strong><span>Saikwalityhome@gmail.com</span></a>
+        <a class="booking-dialog-link" href="tel:+447405730207"><strong>Call us</strong><span>07405 730207</span></a>
+        <a class="booking-dialog-link" href="https://wa.me/447405730207" target="_blank" rel="noopener noreferrer"><strong>WhatsApp</strong><span>Message us directly ↗</span></a>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <a class="brand footer-brand" href="index.html"><span class="brand-mark">SKH</span><span class="brand-name">SAI KWALITY <strong>HOME</strong></span></a>
