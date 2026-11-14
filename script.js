@@ -38,7 +38,7 @@
     });
   }
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") { closeBookingMenu(); closeEnquiryDialog(); }
+    if (event.key === "Escape") { closeBookingMenu(); closeEnquiryDialog(); closeContactDialog(); }
   });
 
 
@@ -66,6 +66,33 @@
   if (closeEnquiry) closeEnquiry.addEventListener("click", closeEnquiryDialog);
   if (enquiryDialog) enquiryDialog.addEventListener("click", (event) => {
     if (event.target === enquiryDialog) closeEnquiryDialog();
+  });
+
+
+  // Floating Contact us menu.
+  const contactDialog = document.getElementById("contact-dialog");
+  const contactTriggers = document.querySelectorAll("[data-open-contact]");
+  const closeContact = contactDialog && contactDialog.querySelector("[data-close-contact]");
+  let lastContactTrigger = null;
+  function openContactDialog(trigger) {
+    if (!contactDialog) { window.location.href = "contact.html#contact-form"; return; }
+    lastContactTrigger = trigger || null;
+    contactDialog.hidden = false;
+    contactDialog.setAttribute("aria-hidden", "false");
+    document.body.classList.add("booking-menu-open");
+    if (closeContact) closeContact.focus();
+  }
+  function closeContactDialog() {
+    if (!contactDialog || contactDialog.hidden) return;
+    contactDialog.hidden = true;
+    contactDialog.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("booking-menu-open");
+    if (lastContactTrigger && document.contains(lastContactTrigger)) lastContactTrigger.focus();
+  }
+  contactTriggers.forEach((button) => button.addEventListener("click", () => openContactDialog(button)));
+  if (closeContact) closeContact.addEventListener("click", closeContactDialog);
+  if (contactDialog) contactDialog.addEventListener("click", (event) => {
+    if (event.target === contactDialog) closeContactDialog();
   });
 
   const year = document.getElementById("year");
