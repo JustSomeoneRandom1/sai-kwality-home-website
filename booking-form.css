@@ -1,0 +1,84 @@
+/* Built-in booking enquiry form */
+.enquiry-section {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: clamp(36px, 7vw, 100px);
+  align-items: start;
+  background: #fff;
+}
+.enquiry-intro { position: sticky; top: 32px; }
+.enquiry-intro h2 { margin-bottom: 22px; }
+.enquiry-intro > p:not(.eyebrow) {
+  max-width: 390px;
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+.enquiry-intro .enquiry-email-note {
+  padding: 17px 18px;
+  border-left: 2px solid var(--gold);
+  background: var(--cream);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+.enquiry-email-note strong { color: var(--green); }
+.enquiry-form {
+  display: grid;
+  gap: 20px;
+  padding: clamp(24px, 4vw, 42px);
+  border: 1px solid var(--sand);
+  background: var(--cream);
+}
+.enquiry-field { display: grid; gap: 8px; min-width: 0; }
+.enquiry-field label {
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .4px;
+}
+.enquiry-field label span { color: #9a6537; }
+.enquiry-field input,
+.enquiry-field select,
+.enquiry-field textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 13px 14px;
+  border: 1px solid #d9d3c8;
+  border-radius: 0;
+  color: var(--ink);
+  background: #fff;
+  font: 13px "DM Sans", Arial, sans-serif;
+}
+.enquiry-field textarea { min-height: 130px; resize: vertical; }
+.enquiry-field input:focus,
+.enquiry-field select:focus,
+.enquiry-field textarea:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-color: var(--gold);
+}
+.enquiry-fields-two { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+.enquiry-privacy, .enquiry-required { color: var(--muted); font-size: 10px; line-height: 1.6; }
+.enquiry-submit {
+  width: fit-content;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+.enquiry-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+}
+@media (max-width: 800px) {
+  .enquiry-section { grid-template-columns: 1fr; gap: 30px; }
+  .enquiry-intro { position: static; }
+  .enquiry-intro > p:not(.eyebrow) { max-width: 620px; }
+}
+@media (max-width: 520px) {
+  .enquiry-fields-two { grid-template-columns: 1fr; }
+  .enquiry-form { padding: 22px 18px; }
+  .enquiry-submit { width: 100%; justify-content: space-between; }
+}
