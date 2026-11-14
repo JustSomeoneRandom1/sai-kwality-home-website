@@ -682,7 +682,7 @@ body.booking-menu-open { overflow: hidden; }
 }
 
 
-/* Always-visible shortcut to the enquiry form */
+/* Floating Contact us button opens the contact options menu */
 .quick-enquiry-float {
   position: fixed;
   right: 26px;
@@ -696,6 +696,8 @@ body.booking-menu-open { overflow: hidden; }
   padding: 0 23px;
   border: 1px solid #d7c08f;
   border-radius: 999px;
+  font-family: inherit;
+  cursor: pointer;
   color: #202b28;
   background: #e2c995;
   box-shadow: 0 8px 28px rgba(20, 32, 27, .22);
