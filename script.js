@@ -129,36 +129,51 @@
     document.documentElement.classList.add("has-scroll-reveal");
   }
 
-  const gallery = document.querySelector(".gallery-grid");
+  const gallery = document.querySelector("[data-property-gallery]");
   if (!gallery) return;
 
-  const items = Array.from(gallery.querySelectorAll("figure")).filter((figure) => {
-    const image = figure.querySelector("img");
-    return image && image.getAttribute("src");
-  });
+  const featuredButton = gallery.querySelector("[data-gallery-open]");
+  const featuredImage = gallery.querySelector(".gallery-feature-image");
+  const featuredCaption = gallery.querySelector(".gallery-feature-caption");
+  const thumbnails = Array.from(gallery.querySelectorAll("[data-gallery-index]"));
+  const images = thumbnails.map((button) => button.querySelector("img")).filter(Boolean);
+  if (!featuredButton || !featuredImage || !images.length) return;
 
-  if (!items.length) return;
+  let activeIndex = 0;
+  let lastTrigger = null;
+  let touchStartX = 0;
 
-  items.forEach((figure, index) => {
-    const image = figure.querySelector("img");
-    figure.setAttribute("tabindex", "0");
-    figure.setAttribute("role", "button");
-    figure.setAttribute("aria-haspopup", "dialog");
-    figure.setAttribute("aria-label", "Enlarge photo: " + (image.alt || "Property photo"));
-    figure.dataset.galleryIndex = String(index);
+  function selectPhoto(index) {
+    activeIndex = (index + images.length) % images.length;
+    const source = images[activeIndex];
+    const thumb = thumbnails[activeIndex];
+    const caption = thumb.querySelector("span");
+    featuredImage.src = source.currentSrc || source.src;
+    featuredImage.alt = source.alt || caption?.textContent.trim() || "Sai Kwality Home property photograph";
+    featuredButton.setAttribute("aria-label", "Open " + featuredImage.alt + " full screen");
+    if (featuredCaption) featuredCaption.textContent = caption ? caption.textContent.trim() : featuredImage.alt;
+    thumbnails.forEach((button, i) => {
+      const active = i === activeIndex;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+  }
+
+  thumbnails.forEach((button, index) => {
+    const image = images[index];
     image.loading = "lazy";
     image.decoding = "async";
     image.addEventListener("error", () => {
-      figure.classList.add("gallery-placeholder");
-      figure.setAttribute("aria-disabled", "true");
-      figure.removeAttribute("tabindex");
-      figure.removeAttribute("role");
+      button.disabled = true;
+      button.classList.add("gallery-thumb-unavailable");
+      button.setAttribute("aria-label", "Photo unavailable");
     }, { once: true });
+    button.addEventListener("click", () => selectPhoto(index));
   });
 
   const dialog = document.createElement("dialog");
   dialog.className = "gallery-lightbox";
-  dialog.setAttribute("aria-label", "Property photo gallery");
+  dialog.setAttribute("aria-label", "Sai Kwality Home photo gallery");
   dialog.innerHTML = `
     <div class="lightbox-layout">
       <div class="lightbox-toolbar">
@@ -169,9 +184,7 @@
           <button class="lightbox-button lightbox-close" type="button" aria-label="Close gallery">×</button>
         </div>
       </div>
-      <div class="lightbox-stage">
-        <img class="lightbox-image" alt="">
-      </div>
+      <div class="lightbox-stage"><img class="lightbox-image" alt=""></div>
       <p class="lightbox-caption"></p>
     </div>`;
   document.body.appendChild(dialog);
@@ -182,69 +195,42 @@
   const previous = dialog.querySelector(".lightbox-prev");
   const next = dialog.querySelector(".lightbox-next");
   const close = dialog.querySelector(".lightbox-close");
-  let activeIndex = 0;
-  let lastTrigger = null;
-  let touchStartX = 0;
 
   function showPhoto(index) {
-    activeIndex = (index + items.length) % items.length;
-    const source = items[activeIndex];
-    const image = source.querySelector("img");
-    const label = source.querySelector("figcaption");
-    lightboxImage.src = image.currentSrc || image.src;
-    lightboxImage.alt = image.alt || "Sai Kwality Homes property photograph";
+    activeIndex = (index + images.length) % images.length;
+    const source = images[activeIndex];
+    const thumb = thumbnails[activeIndex];
+    const label = thumb.querySelector("span");
+    lightboxImage.src = source.currentSrc || source.src;
+    lightboxImage.alt = source.alt || label?.textContent.trim() || "Sai Kwality Home property photograph";
     caption.textContent = label ? label.textContent.trim() : lightboxImage.alt;
-    count.textContent = (activeIndex + 1) + " / " + items.length;
-    previous.disabled = items.length < 2;
-    next.disabled = items.length < 2;
+    count.textContent = "Photo " + (activeIndex + 1) + " of " + images.length;
+    selectPhoto(activeIndex);
+    previous.disabled = next.disabled = images.length < 2;
   }
-
-  function openPhoto(index, trigger) {
+  function openPhoto(trigger) {
     lastTrigger = trigger;
-    showPhoto(index);
+    showPhoto(activeIndex);
     if (!dialog.open) dialog.showModal();
     close.focus();
   }
+  function closeGallery() { if (dialog.open) dialog.close(); }
 
-  function closeGallery() {
-    if (dialog.open) dialog.close();
-  }
-
-  items.forEach((figure, index) => {
-    figure.addEventListener("click", () => {
-      if (!figure.classList.contains("gallery-placeholder")) openPhoto(index, figure);
-    });
-    figure.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        if (!figure.classList.contains("gallery-placeholder")) openPhoto(index, figure);
-      }
-    });
-  });
-
+  featuredButton.addEventListener("click", () => openPhoto(featuredButton));
   previous.addEventListener("click", () => showPhoto(activeIndex - 1));
   next.addEventListener("click", () => showPhoto(activeIndex + 1));
   close.addEventListener("click", closeGallery);
-  dialog.addEventListener("click", (event) => {
-    if (event.target === dialog) closeGallery();
-  });
-  dialog.addEventListener("close", () => {
-    if (lastTrigger && document.contains(lastTrigger)) lastTrigger.focus();
-  });
+  dialog.addEventListener("click", (event) => { if (event.target === dialog) closeGallery(); });
+  dialog.addEventListener("close", () => { if (lastTrigger && document.contains(lastTrigger)) lastTrigger.focus(); });
   dialog.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      showPhoto(activeIndex - 1);
-    } else if (event.key === "ArrowRight") {
-      event.preventDefault();
-      showPhoto(activeIndex + 1);
-    }
+    if (event.key === "ArrowLeft") { event.preventDefault(); showPhoto(activeIndex - 1); }
+    else if (event.key === "ArrowRight") { event.preventDefault(); showPhoto(activeIndex + 1); }
   });
-  dialog.addEventListener("touchstart", (event) => {
-    touchStartX = event.changedTouches[0].screenX;
-  }, { passive: true });
+  dialog.addEventListener("touchstart", (event) => { touchStartX = event.changedTouches[0].screenX; }, { passive: true });
   dialog.addEventListener("touchend", (event) => {
     const distance = event.changedTouches[0].screenX - touchStartX;
     if (Math.abs(distance) > 50) showPhoto(activeIndex + (distance < 0 ? 1 : -1));
   }, { passive: true });
+
+  selectPhoto(0);
 })();
