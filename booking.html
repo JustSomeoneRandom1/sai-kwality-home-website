@@ -79,18 +79,51 @@
         <p class="eyebrow">TAKE A CLOSER LOOK</p>
         <h2>Explore the home<br><em>before you arrive.</em></h2>
       </div>
-      <p>Browse photographs of the living area, bedrooms, kitchen, bathroom, dining space and garden. Select any photograph to view it larger.</p>
+      <p>Browse photographs of the living area, bedrooms, kitchen, bathroom, dining space and garden. Choose a thumbnail to change the featured photograph, or open it full size to browse every image.</p>
     </div>
-    <div class="gallery-grid">
-      <figure class="gallery-large"><img src="images/Living-room.jpeg" alt="Living room"><figcaption>Living space</figcaption></figure>
-      <figure><img src="images/Bedroom.jpeg" alt="Bedroom"><figcaption>Bedroom</figcaption></figure>
-      <figure><img src="images/Kitchen.jpeg" alt="Kitchen"><figcaption>Kitchen</figcaption></figure>
-      <figure><img src="images/Bathroom.jpeg" alt="Bathroom"><figcaption>Bathroom</figcaption></figure>
-      <figure><img src="images/Dining-area.jpeg" alt="Dining area"><figcaption>Dining area</figcaption></figure>
-      <figure><img src="images/Second-Bedroom.jpeg" alt="Second bedroom"><figcaption>Second bedroom</figcaption></figure>
-      <figure><img src="images/Living-Space.jpeg" alt="Living space"><figcaption>Living space</figcaption></figure>
-      <figure><img src="images/Garden.jpeg" alt="Garden"><figcaption>Garden</figcaption></figure>
-    </div>
+    <div class="gallery-viewer" data-property-gallery>
+      <figure class="gallery-feature">
+        <button class="gallery-feature-open" type="button" data-gallery-open aria-label="Open Living room photo full screen">
+          <img class="gallery-feature-image" src="images/Living-room.jpeg" alt="Living room" decoding="async">
+          <span class="gallery-feature-hint">View full size <span aria-hidden="true">↗</span></span>
+        </button>
+        <figcaption class="gallery-feature-caption">Living space</figcaption>
+      </figure>
+      <div class="gallery-thumbnails" role="group" aria-label="Choose a property photograph">
+        <button class="gallery-thumb is-active" type="button" data-gallery-index="0" aria-pressed="true" aria-label="Show Living room photo">
+          <img src="images/Living-room.jpeg" alt="" loading="lazy" decoding="async">
+          <span>Living space</span>
+        </button>
+        <button class="gallery-thumb" type="button" data-gallery-index="1" aria-pressed="false" aria-label="Show Bedroom photo">
+          <img src="images/Bedroom.jpeg" alt="" loading="lazy" decoding="async">
+          <span>Bedroom</span>
+        </button>
+        <button class="gallery-thumb" type="button" data-gallery-index="2" aria-pressed="false" aria-label="Show Kitchen photo">
+          <img src="images/Kitchen.jpeg" alt="" loading="lazy" decoding="async">
+          <span>Kitchen</span>
+        </button>
+        <button class="gallery-thumb" type="button" data-gallery-index="3" aria-pressed="false" aria-label="Show Bathroom photo">
+          <img src="images/Bathroom.jpeg" alt="" loading="lazy" decoding="async">
+          <span>Bathroom</span>
+        </button>
+        <button class="gallery-thumb" type="button" data-gallery-index="4" aria-pressed="false" aria-label="Show Dining area photo">
+          <img src="images/Dining-area.jpeg" alt="" loading="lazy" decoding="async">
+          <span>Dining area</span>
+        </button>
+        <button class="gallery-thumb" type="button" data-gallery-index="5" aria-pressed="false" aria-label="Show Second bedroom photo">
+          <img src="images/Second-Bedroom.jpeg" alt="" loading="lazy" decoding="async">
+          <span>Second bedroom</span>
+        </button>
+        <button class="gallery-thumb" type="button" data-gallery-index="6" aria-pressed="false" aria-label="Show Living space photo">
+          <img src="images/Living-Space.jpeg" alt="" loading="lazy" decoding="async">
+          <span>Living space</span>
+        </button>
+        <button class="gallery-thumb" type="button" data-gallery-index="7" aria-pressed="false" aria-label="Show Garden photo">
+          <img src="images/Garden.jpeg" alt="" loading="lazy" decoding="async">
+          <span>Garden</span>
+        </button>
+      </div>
+    </div>    </div>
   </section>
 
 
