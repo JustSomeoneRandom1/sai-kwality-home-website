@@ -13,7 +13,7 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="alternate icon" href="favicon.svg">
   <link rel="canonical" href="https://saikwalityhome.co.uk/">
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=11">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -163,42 +163,51 @@
           <p class="eyebrow">TAKE A CLOSER LOOK</p>
           <h2>Make yourself<br><em>at home.</em></h2>
         </div>
-        <p>Explore the spaces at Sai Kwality Home. Select any photograph to view it larger and browse the gallery.</p>
+        <p>Explore the spaces at Sai Kwality Home. Choose a thumbnail to change the featured photograph, or open it full size to browse every image.</p>
       </div>
-      <div class="gallery-grid">
-        <figure class="gallery-large">
-          <img src="images/Living-room.jpeg" alt="Living room" onerror="this.style.display='none'; this.parentElement.classList.add('gallery-placeholder');">
-          <figcaption>Living space </figcaption>
-        </figure>
-        <figure>
-          <img src="images/Bedroom.jpeg" alt="Bedroom" onerror="this.style.display='none'; this.parentElement.classList.add('gallery-placeholder');">
-          <figcaption>Bedroom </figcaption>
-        </figure>
-        <figure>
-          <img src="images/Kitchen.jpeg" alt="Kitchen" onerror="this.style.display='none'; this.parentElement.classList.add('gallery-placeholder');">
-          <figcaption>Kitchen </figcaption>
-        </figure>
-        <figure>
-          <img src="images/Bathroom.jpeg" alt="Bathroom" onerror="this.style.display='none'; this.parentElement.classList.add('gallery-placeholder');">
-          <figcaption>Bathroom </figcaption>
-        </figure>
-        <figure>
-          <img src="images/Dining-area.jpeg" alt="Dining area" onerror="this.style.display='none'; this.parentElement.classList.add('gallery-placeholder');">
-          <figcaption>Dining area </figcaption>
-        </figure>
-        <figure>
-          <img src="images/Second-Bedroom.jpeg" alt="Second bedroom" onerror="this.style.display='none'; this.parentElement.classList.add('gallery-placeholder');">
-          <figcaption>Second bedroom </figcaption>
-        </figure>
-        <figure>
-          <img src="images/Living-Space.jpeg" alt="Living Space" onerror="this.style.display='none'; this.parentElement.classList.add('gallery-placeholder');">
-          <figcaption>Living Space </figcaption>
-        </figure>
-        <figure>
-          <img src="images/Garden.jpeg" alt="Garden" onerror="this.style.display='none'; this.parentElement.classList.add('gallery-placeholder');">
-          <figcaption>Garden </figcaption>
-        </figure>
+    <div class="gallery-viewer" data-property-gallery>
+      <figure class="gallery-feature">
+        <button class="gallery-feature-open" type="button" data-gallery-open aria-label="Open Living room photo full screen">
+          <img class="gallery-feature-image" src="images/Living-room.jpeg" alt="Living room" decoding="async">
+          <span class="gallery-feature-hint">View full size <span aria-hidden="true">↗</span></span>
+        </button>
+        <figcaption class="gallery-feature-caption">Living space</figcaption>
+      </figure>
+      <div class="gallery-thumbnails" role="group" aria-label="Choose a property photograph">
+        <button class="gallery-thumb is-active" type="button" data-gallery-index="0" aria-pressed="true" aria-label="Show Living room photo">
+          <img src="images/Living-room.jpeg" alt="" loading="lazy" decoding="async">
+          <span>Living space</span>
+        </button>
+        <button class="gallery-thumb" type="button" data-gallery-index="1" aria-pressed="false" aria-label="Show Bedroom photo">
+          <img src="images/Bedroom.jpeg" alt="" loading="lazy" decoding="async">
+          <span>Bedroom</span>
+        </button>
+        <button class="gallery-thumb" type="button" data-gallery-index="2" aria-pressed="false" aria-label="Show Kitchen photo">
+          <img src="images/Kitchen.jpeg" alt="" loading="lazy" decoding="async">
+          <span>Kitchen</span>
+        </button>
+        <button class="gallery-thumb" type="button" data-gallery-index="3" aria-pressed="false" aria-label="Show Bathroom photo">
+          <img src="images/Bathroom.jpeg" alt="" loading="lazy" decoding="async">
+          <span>Bathroom</span>
+        </button>
+        <button class="gallery-thumb" type="button" data-gallery-index="4" aria-pressed="false" aria-label="Show Dining area photo">
+          <img src="images/Dining-area.jpeg" alt="" loading="lazy" decoding="async">
+          <span>Dining area</span>
+        </button>
+        <button class="gallery-thumb" type="button" data-gallery-index="5" aria-pressed="false" aria-label="Show Second bedroom photo">
+          <img src="images/Second-Bedroom.jpeg" alt="" loading="lazy" decoding="async">
+          <span>Second bedroom</span>
+        </button>
+        <button class="gallery-thumb" type="button" data-gallery-index="6" aria-pressed="false" aria-label="Show Living space photo">
+          <img src="images/Living-Space.jpeg" alt="" loading="lazy" decoding="async">
+          <span>Living space</span>
+        </button>
+        <button class="gallery-thumb" type="button" data-gallery-index="7" aria-pressed="false" aria-label="Show Garden photo">
+          <img src="images/Garden.jpeg" alt="" loading="lazy" decoding="async">
+          <span>Garden</span>
+        </button>
       </div>
+    </div>      </div>
     </section>
 
 
